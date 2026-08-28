@@ -1,0 +1,36 @@
+GAL16V8
+CombTest
+
+Clock A0   A1   A2    A3   NC   NC   NC	   NC	GND
+/OE   SEGA SEGB SEGC  SEGD SEGE SEGF SEGG  NC	VCC
+
+; Logic equations — active low (segment ON = pin LOW)
+; We list the minterms where each segment is OFF.
+;
+; Segment OFF sets:
+;   a OFF: 1,4,B,D
+;   b OFF: 2,4,7,8,D
+;   c OFF: 0,1,4,6,7,A,C
+;   d OFF: 1,4,5,8,A,E
+;   e OFF: 1,7,B,D
+;   f OFF: 1,5,6,7,A,B,C,F
+;   g OFF: 0,1,7
+
+/SEGA =  A0
+
+/SEGB =  A0
+
+/SEGC =  A0
+
+/SEGD =  A0
+
+/SEGE =  A0
+
+/SEGF =  A0
+
+/SEGG =  A1
+
+
+DESCRIPTION
+7-segment hexadecimal decoder. Active-low outputs drive
+common-anode LED display segments a through g.

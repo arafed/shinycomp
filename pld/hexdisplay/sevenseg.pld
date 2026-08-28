@@ -1,0 +1,81 @@
+GAL16V8
+CombTest
+
+Clock A0   A1   A2    A3   NC   NC   NC	   NC	GND
+/OE   SEGA SEGB SEGC  SEGD SEGE SEGF SEGG  NC	VCC
+
+; Logic equations — active low (segment ON = pin LOW)
+; We list the minterms where each segment is OFF.
+;
+; Segment OFF sets:
+;   a OFF: 1,4,B,D
+;   b OFF: 2,4,7,8,D
+;   c OFF: 0,1,4,6,7,A,C
+;   d OFF: 1,4,5,8,A,E
+;   e OFF: 1,7,B,D
+;   f OFF: 1,5,6,7,A,B,C,F
+;   g OFF: 0,1,7
+
+;    0   0   0   0   0
+;    1   0   0   0   1
+;    2   0   0   1   0
+;    3   0   0   1   1
+;    4   0   1   0   0
+;    5   0   1   0   1
+;    6   0   1   1   0
+;    7   0   1   1   1
+;    8   1   0   0   0
+;    9   1   0   0   1
+;    A   1   0   1   0
+;    B   1   0   1   1
+;    C   1   1   0   0
+;    D   1   1   0   1
+;    E   1   1   1   0
+;    F   1   1   1   1
+
+SEGA =   /A3*/A2*/A1* A0    ; 1
+       + /A3* A2*/A1*/A0     ; 4
+       +  A3*/A2* A1* A0     ; B
+       +  A3* A2*/A1* A0     ; D
+
+SEGB =   /A3* A2*/A1* A0     ; 5
+       + /A3* A2* A1*/A0     ; 6
+       +  A3*/A2* A1* A0     ; B
+       +  A3* A2*/A1*/A0     ; C
+       +  A3* A2* A1*/A0     ; E
+       +  A3* A2* A1* A0     ; F
+
+SEGC =   /A3*/A2* A1*/A0     ; 2
+       +  A3* A2*/A1*/A0     ; C
+       +  A3* A2* A1*/A0     ; E
+       +  A3* A2* A1* A0     ; F
+
+SEGD =   /A3*/A2*/A1* A0    ; 1
+       + /A3* A2*/A1*/A0     ; 4
+       + /A3* A2* A1* A0     ; 7
+       +  A3*/A2*/A1* A0     ; 9
+       +  A3*/A2* A1*/A0     ; A
+       +  A3* A2* A1* A0     ; F
+
+SEGE =  /A3*/A2*/A1* A0    ; 1
+       + /A3*/A2* A1* A0     ; 3
+       + /A3* A2*/A1*/A0     ; 4
+       + /A3* A2*/A1* A0     ; 5
+       + /A3* A2* A1* A0     ; 7
+       +  A3*/A2*/A1* A0     ; 9
+
+SEGF =   /A3*/A2*/A1* A0    ; 1
+       + /A3*/A2* A1*/A0     ; 2
+       + /A3*/A2* A1* A0     ; 3
+       + /A3* A2* A1* A0     ; 7
+       +  A3* A2*/A1* A0     ; D
+
+
+SEGG =   /A3*/A2*/A1*/A0    ; 0
+       + /A3*/A2*/A1* A0     ; 1
+       + /A3* A2* A1* A0     ; 7
+       +  A3* A2*/A1*/A0     ; C
+
+DESCRIPTION
+7-segment hexadecimal decoder. Active-low outputs drive
+common-anode LED display segments a through g.

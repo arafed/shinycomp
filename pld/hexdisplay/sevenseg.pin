@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | Clock    | Input
+   2   | A0       | Input
+   3   | A1       | Input
+   4   | A2       | Input
+   5   | A3       | Input
+   6   | NC       | Input
+   7   | NC       | Input
+   8   | NC       | Input
+   9   | NC       | Input
+  10   | GND      | GND
+  11   | /OE      | Input
+  12   | SEGA     | Output
+  13   | SEGB     | Output
+  14   | SEGC     | Output
+  15   | SEGD     | Output
+  16   | SEGE     | Output
+  17   | SEGF     | Output
+  18   | SEGG     | Output
+  19   | NC       | NC
+  20   | VCC      | VCC
+
