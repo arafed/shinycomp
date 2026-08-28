@@ -1,0 +1,39 @@
+ca65 V2.18 - Fedora 2.19-15.fc44
+Main file   : rom.asm
+Current file: rom.asm
+
+000000r 1               ;;  	Memory map
+000000r 1               ;; 	$0000 - $7FFF	RAM
+000000r 1               ;;  	$e000 - $FDFF	ROM
+000000r 1               
+000000r 1               .setcpu "65816"
+000000r 1               .feature string_escapes
+000000r 1               
+000000r 1               	.segment "CODE"
+000000r 1  41 4E 44 52  	.asciiz "ANDREW"
+000004r 1  45 57 00     
+000007r 1               
+000007r 1               reset:
+000007r 1  18           	clc
+000008r 1  FB           	xce
+000009r 1  C2 30        	rep #$30
+00000Br 1               
+00000Br 1               loop:
+00000Br 1  4C rr rr     	jmp loop
+00000Er 1               
+00000Er 1               .segment "RODATA"
+000000r 1               
+000000r 1               .segment "IRQB_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               .segment "RESET_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               .segment "NMIB_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               .segment "ABORT_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               .segment "BRK_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               .segment "COP_VEC"
+000000r 1  rr rr        	.word reset
+000002r 1               
+000002r 1               
